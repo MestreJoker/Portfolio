@@ -3,6 +3,7 @@ import { faReact, faTailwindCss, faTypescript } from "@fortawesome/free-brands-s
 import { faArrowRight, faBriefcase, faGraduationCap, faLocation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Image from "next/image"
+import Link from "next/link";
 
 export default function InformacoesPrincipais() {
     const tecnologias = [
@@ -11,7 +12,7 @@ export default function InformacoesPrincipais() {
             nome: "React"
         },
         {
-            icone: <Image alt="next" src={"/images/icons/nextJs.png"} width={20} height={20}/>,
+            icone: <Image alt="next" src={"/images/icons/nextJs.png"} width={20} height={20} />,
             nome: "Next"
         },
         {
@@ -26,11 +27,11 @@ export default function InformacoesPrincipais() {
 
     const informacoes = [
         {
-            icone: <FontAwesomeIcon icon={faLocation}/> ,
+            icone: <FontAwesomeIcon icon={faLocation} />,
             texo: "São Paulo - SP"
         },
         {
-            icone: <FontAwesomeIcon icon={faGraduationCap} /> ,
+            icone: <FontAwesomeIcon icon={faGraduationCap} />,
             texo: "ADS - Cruzeiro do Sul"
         },
         {
@@ -39,16 +40,16 @@ export default function InformacoesPrincipais() {
         }
     ]
     return (
-        <div className="flex gap-6 items-center border-b border-gray-700 pb-6">
+        <div className="secaoPrincipal flex gap-6 items-center border-b border-gray-700 pt-8 pb-6">
             {/*Metade à esquerda*/}
-            <div className="flex-[1.2] flex flex-col gap-5">
+            <div className="heroTexto flex-[1.2] flex flex-col gap-5">
                 <div className="px-3 py-1 bg-[#0e1c36] rounded-2xl text-white w-fit">Olá, eu sou</div>
 
-                <div>
-                    <p className="text-6xl font-bold">
+                <div className="heroTitulos">
+                    <p className="heroNome text-6xl font-bold">
                         Gabriel <span className="text-(--colorMain)">Gomes</span>
                     </p>
-                    <p className="text-5xl font-bold">
+                    <p className="heroCargo text-5xl font-bold">
                         Desenvolvedor <span className="text-(--colorMain)">Front-end</span>
                     </p>
                 </div>
@@ -57,7 +58,7 @@ export default function InformacoesPrincipais() {
                     Crio interfaces modernas, responsivas e funcionais para aplicações web, unindo design e tecnologia para transformar ideias em soluções reais
                 </p>
 
-                <div className="flex w-full justify-start gap-3">
+                <div className="heroTecnologias flex w-full justify-start gap-3">
                     {tecnologias.map((item, index) => {
                         return (
                             <div key={`card_${item.nome}`} className="px-2 py-1 rounded-xl flex items-center gap-3 w-fit bg-[#0e1c36]">
@@ -68,11 +69,14 @@ export default function InformacoesPrincipais() {
                     })}
                 </div>
 
-                <div className="flex gap-4">
-                    <button className="botaoPreenchido flex items-center">
-                        <p className="text-md px-2 py-1">Ver meus projetos</p>
-                        <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
+                <div className="heroAcoes flex gap-4">
+                    <Link href={"https://github.com/MestreJoker?tab=repositories"}
+                    target="_blank">
+                        <button className="botaoPreenchido flex items-center">
+                            <p className="text-md px-2 py-1">Ver meus projetos</p>
+                            <FontAwesomeIcon icon={faArrowRight} />
+                        </button>
+                    </Link>
 
                     <button className="botaoSemFundo flex items-center gap-2">
                         Quero um Projeto
@@ -80,9 +84,9 @@ export default function InformacoesPrincipais() {
                     </button>
                 </div>
 
-                <div className="flex gap-5">
+                <div className="heroInformacoes flex gap-5">
                     {informacoes.map((item, index) => {
-                        return(
+                        return (
                             <div key={`informacao_${index}`} className="flex items-center gap-2 text-gray-400 text-sm">
                                 {item.icone}
                                 {item.texo}
@@ -94,7 +98,7 @@ export default function InformacoesPrincipais() {
             </div>
 
             {/*Metade à direita*/}
-            <div className="w-fit border-b-3 border-[#4a4af04b] rounded-lg">
+            <div className="heroImagem w-fit border-b-3 border-[#4a4af04b] rounded-lg">
                 <Image alt="imagemPrinciapl" src={'/images/imagemPrincipal.png'} width={550} height={200} />
             </div>
         </div>

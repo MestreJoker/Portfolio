@@ -16,12 +16,12 @@ export default function Header(){
     ];
 
     return(
-        <header className="bg-[#020913] px-10 py-3 w-full border-b border-gray-700 flex items-center justify-between">
-            <p className="text-(--colorMain) text-2xl font-bold">
+        <header className="cabecalho bg-[#020913] px-10 py-3 w-full border-b border-gray-700 flex items-center justify-between fixed z-1">
+            <p className="marcaCabecalho text-(--colorMain) text-2xl font-bold">
                 {`</>`} <span className="text-white">Gabriel</span> Gomes
             </p>
 
-            <div className="flex gap-6">
+            <div className="linksCabecalho flex gap-6">
                 {links.map((item, index) => {
                     return(
                         <Link key={`link_${item.slug}`} href={`#${item.slug}`}
@@ -34,7 +34,7 @@ export default function Header(){
                 })}
             </div>
 
-            <button className="botaoPreenchido">
+            <button className="cabecalhoAcao botaoPreenchido">
                 Vamos conversar
             </button>
         </header>

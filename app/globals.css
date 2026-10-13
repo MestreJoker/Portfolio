@@ -3,7 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --colorMain: #4a4bf0
+  --colorMain: #4a4bf0;
+  --corBorda: #0d1a2d
 }
 
 @theme inline {
@@ -29,9 +30,146 @@ body {
 }
 
 .botaoPreenchido {
-  @apply bg-[#4a4bf0] p-3 py-2 text-white font-light rounded-3xl text-sm cursor-pointer hover:bg-[#0c0ca7] transition-all duration-300
+  @apply bg-[#4a4bf0] p-3 py-2 text-white font-light rounded-3xl text-sm cursor-pointer hover:bg-[#0c0ca7] transition-all duration-300 flex items-center gap-1
 }
 
 .botaoSemFundo {
-  @apply border border-[#4a4bf0] p-3 py-2 bg-transparent font-light rounded-3xl text-sm cursor-pointer hover:bg-[#4a4bf0] hover:border-transparent transition-all duration-300
+  @apply border border-[#4a4bf0] p-3 py-2 bg-transparent font-light rounded-3xl text-sm cursor-pointer hover:bg-[#4a4bf0] hover:border-transparent transition-all duration-300 flex items-center gap-1
+}
+
+.tituloSecao {
+  @apply text-3xl font-bold
+}
+.iconeTituloSecao {
+  @apply text-(--colorMain) text-3xl
+}
+
+.projetosCarrossel {
+  @apply relative
+}
+
+.projetosSeta {
+  @apply absolute top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#0e1c36] text-white shadow-lg transition-colors hover:bg-(--colorMain) disabled:pointer-events-none disabled:opacity-40
+}
+
+.projetosSetaEsquerda {
+  @apply left-2
+}
+
+.projetosSetaDireita {
+  @apply right-2
+}
+
+.etapasTrabalho {
+  @apply flex-wrap
+}
+
+.etapaCard {
+  @apply flex-1
+}
+
+@media (width < theme(--breakpoint-lg)) {
+  .cabecalho {
+    @apply flex-wrap gap-y-3;
+  }
+
+  .linksCabecalho {
+    @apply order-3 w-full gap-6 overflow-x-auto whitespace-nowrap pb-1;
+  }
+
+  .conteudoPrincipal {
+    @apply pt-28;
+  }
+
+  .secaoPrincipal {
+    @apply flex-col items-stretch gap-8 pt-4;
+  }
+
+  .heroTexto {
+    @apply w-full;
+  }
+
+  .heroImagem {
+    @apply mx-auto max-w-full;
+  }
+
+  .heroImagem img {
+    @apply h-auto max-w-full;
+  }
+
+  .experienciaCard {
+    @apply flex-col gap-4;
+  }
+
+  .experienciaResumo {
+    @apply border-r-0 border-b border-gray-700 pb-4 pr-0;
+  }
+
+  .experienciaTarefas ul {
+    @apply pl-0;
+  }
+}
+
+@media (width < theme(--breakpoint-md)) {
+  .cabecalho {
+    @apply px-4;
+  }
+
+  .marcaCabecalho {
+    @apply text-xl;
+  }
+
+  .cabecalhoAcao {
+    @apply hidden;
+  }
+
+  .linksCabecalho {
+    @apply gap-5;
+  }
+
+  .linksCabecalho a {
+    @apply text-xs;
+  }
+
+  .conteudoPrincipal {
+    @apply px-4 pt-28;
+  }
+
+  .heroNome {
+    @apply text-4xl;
+  }
+
+  .heroCargo {
+    @apply text-3xl;
+  }
+
+  .heroTecnologias,
+  .heroAcoes,
+  .heroInformacoes {
+    @apply flex-wrap;
+  }
+
+  .tituloSecao {
+    @apply text-2xl;
+  }
+
+  .iconeTituloSecao {
+    @apply text-2xl;
+  }
+
+  .projetoCard {
+    @apply w-[min(84vw,23rem)] shrink-0;
+  }
+
+  .projetosSeta {
+    @apply hidden;
+  }
+
+  .experienciaResumo {
+    @apply flex-col gap-2;
+  }
+
+  .etapaCard {
+    @apply basis-full;
+  }
 }
