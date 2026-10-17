@@ -84,7 +84,7 @@ export default function MeusProjetos() {
             tecnologias: [
                 {
                     icone: <FontAwesomeIcon icon={faReact} />,
-                    nome: "React"
+                    nome: "ReactNative"
                 },
                 {
                     icone: <FontAwesomeIcon icon={faLaravel} />,

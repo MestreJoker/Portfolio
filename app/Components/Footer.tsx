@@ -7,10 +7,10 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 export default function Footer() {
     return (
         <footer id='contato' className="bg-gray-900 text-gray-300 py-8 px-6 border-t border-gray-800">
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="rodapeConteudo max-w-6xl mx-auto flex flex-col items-center justify-between gap-6">
 
                 {/* Identificação / Copyright */}
-                <div className="text-center md:text-left">
+                <div className="rodapeIdentificacao text-center">
                     <p className="text-(--colorMain) font-semibold text-lg">
                         {`</> `}
                         <span className='text-white'>Gabriel </span>

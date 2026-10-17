@@ -48,6 +48,14 @@ body {
   @apply relative
 }
 
+.projetosFaixa {
+  @apply overflow-x-auto overscroll-x-contain
+}
+
+.projetoCard {
+  @apply w-[calc(100%_-_1.5rem)] max-w-92 shrink-0;
+}
+
 .projetosSeta {
   @apply absolute top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#0e1c36] text-white shadow-lg transition-colors hover:bg-(--colorMain) disabled:pointer-events-none disabled:opacity-40
 }
@@ -86,6 +94,20 @@ body {
 
 .modalCertificadoImagem {
   @apply h-auto w-auto max-h-[calc(100dvh-2rem)] max-w-[calc(100vw-2rem)] object-contain;
+}
+
+@media (width >= theme(--breakpoint-md)) {
+  .projetoCard {
+    @apply w-100 max-w-none;
+  }
+
+  .rodapeConteudo {
+    @apply flex-row;
+  }
+
+  .rodapeIdentificacao {
+    @apply text-left;
+  }
 }
 
 @media (width < theme(--breakpoint-lg)) {
@@ -175,10 +197,6 @@ body {
 
   .iconeTituloSecao {
     @apply text-2xl;
-  }
-
-  .projetoCard {
-    @apply w-[min(84vw,23rem)] shrink-0;
   }
 
   .projetosSeta {
