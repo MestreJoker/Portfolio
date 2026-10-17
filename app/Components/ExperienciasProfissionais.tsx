@@ -28,8 +28,8 @@ export default function ExperienciasProfissionais() {
                             <Image alt={`logo${index + 1}`} src={item.logo} width={90} height={40}/>
 
                             <div>
-                                <p className="text-xl font-bold">{item.empresa}</p>
-                                <p>{item.cargo}</p>
+                                <p className="text-xl font-bold">{item.cargo}</p>
+                                <p>{item.empresa}</p>
                                 <p className="text-gray-500">{item.periodo}</p>
                             </div>
                         </div>

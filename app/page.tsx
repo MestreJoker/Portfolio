@@ -3,6 +3,7 @@ import InformacoesPrincipais from "./Components/InformacoesPrincipais";
 import MeusProjetos from "./Components/MeusProjetos";
 import ExperienciasProfissionais from "./Components/ExperienciasProfissionais";
 import ComoTrabalho from "./Components/ComoTrabalho";
+import MeusCertificados from "./Components/MeusCertificados";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <InformacoesPrincipais />
         <MeusProjetos />
         <ExperienciasProfissionais />
+        <MeusCertificados />
         <ComoTrabalho />
       </main>
     </div>
