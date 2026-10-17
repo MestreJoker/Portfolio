@@ -49,11 +49,11 @@ body {
 }
 
 .projetosFaixa {
-  @apply overflow-x-auto overscroll-x-contain
+  @apply overflow-x-hidden overscroll-x-contain
 }
 
 .projetoCard {
-  @apply w-[calc(100%_-_1.5rem)] max-w-92 shrink-0;
+  @apply w-11/12 max-w-92 shrink-0;
 }
 
 .projetosSeta {
@@ -197,6 +197,10 @@ body {
 
   .iconeTituloSecao {
     @apply text-2xl;
+  }
+
+  .projetosFaixa {
+    @apply overflow-x-auto;
   }
 
   .projetosSeta {
