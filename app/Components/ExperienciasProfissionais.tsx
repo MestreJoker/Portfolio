@@ -16,7 +16,7 @@ export default function ExperienciasProfissionais() {
         }
     ]
     return(
-        <div className="flex flex-col mt-8">
+        <div id="experiencia" className="flex flex-col mt-8">
             <div className="flex gap-2 items-center mb-4">
                 <FontAwesomeIcon icon={faSuitcase} className="iconeTituloSecao"/>
                 <h3 className="tituloSecao">Experiência Profissional</h3>

@@ -21,7 +21,7 @@ export default function ComoTrabalho() {
         },
     ]
     return (
-        <div className="py-8">
+        <div id="comoTrabalho" className="py-8">
             <div className="flex gap-2 items-center">
                 <FontAwesomeIcon icon={faDiagramProject} className="iconeTituloSecao"/>
                 <h3 className="tituloSecao">Como eu trabalho</h3>

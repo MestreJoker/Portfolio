@@ -1,18 +1,77 @@
 'use client'
 
-import { faAward } from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft, faArrowRight, faAward } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import ModalCertificado from "./ModalCertificado"
 
 export default function MeusCertificados() {
     const [showModal, setShowModal] = useState<boolean>(false)
     const [imagemModal, setImagemModal] = useState<string>("")
+    const faixaCertificadosRef = useRef<HTMLDivElement>(null)
+    const [temOverflow, setTemOverflow] = useState(false)
+    const [podeRolarEsquerda, setPodeRolarEsquerda] = useState(false)
+    const [podeRolarDireita, setPodeRolarDireita] = useState(false)
+
+    useEffect(() => {
+        const faixaCertificados = faixaCertificadosRef.current
+        if (!faixaCertificados) return
+
+        const atualizarControles = () => {
+            const maximoScroll = faixaCertificados.scrollWidth - faixaCertificados.clientWidth
+            setTemOverflow(maximoScroll > 1)
+            setPodeRolarEsquerda(faixaCertificados.scrollLeft > 1)
+            setPodeRolarDireita(maximoScroll - faixaCertificados.scrollLeft > 1)
+        }
+
+        const observador = new ResizeObserver(atualizarControles)
+        observador.observe(faixaCertificados)
+        faixaCertificados.addEventListener("scroll", atualizarControles, { passive: true })
+        atualizarControles()
+
+        return () => {
+            observador.disconnect()
+            faixaCertificados.removeEventListener("scroll", atualizarControles)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!showModal) return
+
+        const overflowBody = document.body.style.overflow
+        const overflowDocumento = document.documentElement.style.overflow
+        document.body.style.overflow = "hidden"
+        document.documentElement.style.overflow = "hidden"
+
+        const fecharComEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setShowModal(false)
+        }
+
+        window.addEventListener("keydown", fecharComEscape)
+
+        return () => {
+            document.body.style.overflow = overflowBody
+            document.documentElement.style.overflow = overflowDocumento
+            window.removeEventListener("keydown", fecharComEscape)
+        }
+    }, [showModal])
 
     function exibirModal(imagem: string){
         setShowModal(true)
         setImagemModal(imagem)
+    }
+
+    function rolarCertificados(direcao: -1 | 1) {
+        const faixaCertificados = faixaCertificadosRef.current
+        const primeiroCard = faixaCertificados?.firstElementChild
+        if (!faixaCertificados || !primeiroCard) return
+
+        const espacamento = Number.parseFloat(getComputedStyle(faixaCertificados).columnGap) || 0
+        faixaCertificados.scrollBy({
+            left: direcao * (primeiroCard.getBoundingClientRect().width + espacamento),
+            behavior: "smooth"
+        })
     }
 
     const certificados = [
@@ -46,12 +105,13 @@ export default function MeusCertificados() {
         }
     ]
     return (
-        <div className="mt-8 relative">
+        <div id="certificados" className="mt-8 relative">
             <div className="flex gap-2 items-center mb-4">
                 <FontAwesomeIcon icon={faAward} className="iconeTituloSecao" />
                 <h3 className="tituloSecao">Meus Certificados</h3>
             </div>
-            <div className="flex gap-6">
+            <div className="projetosCarrossel">
+                <div ref={faixaCertificadosRef} className="projetosFaixa flex flex-nowrap gap-6 overflow-hidden py-2 w-full">
                 {certificados.map((item, index) => {
                     return (
                         <div
@@ -77,6 +137,31 @@ export default function MeusCertificados() {
                         </div>
                     )
                 })}
+                </div>
+                {temOverflow && (
+                    <>
+                        <button
+                            type="button"
+                            className="projetosSeta projetosSetaEsquerda"
+                            aria-label="Mostrar certificados anteriores"
+                            title="Certificados anteriores"
+                            disabled={!podeRolarEsquerda}
+                            onClick={() => rolarCertificados(-1)}
+                        >
+                            <FontAwesomeIcon icon={faArrowLeft} />
+                        </button>
+                        <button
+                            type="button"
+                            className="projetosSeta projetosSetaDireita"
+                            aria-label="Mostrar próximos certificados"
+                            title="Próximos certificados"
+                            disabled={!podeRolarDireita}
+                            onClick={() => rolarCertificados(1)}
+                        >
+                            <FontAwesomeIcon icon={faArrowRight} />
+                        </button>
+                    </>
+                )}
             </div>
 
             <ModalCertificado imagem={imagemModal} modalVisible={showModal} informarClique={() => setShowModal(false)}/>

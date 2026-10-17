@@ -1,6 +1,6 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { faReact, faTailwindCss, faTypescript } from "@fortawesome/free-brands-svg-icons"
-import { faArrowRight, faBriefcase, faGraduationCap, faLocation } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faBriefcase, faDownload, faGraduationCap, faLocation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Image from "next/image"
 import Link from "next/link";
@@ -40,7 +40,7 @@ export default function InformacoesPrincipais() {
         }
     ]
     return (
-        <div className="secaoPrincipal flex gap-6 items-center border-b border-gray-700 pt-8 pb-6">
+        <div id="inicio" className="secaoPrincipal flex gap-6 items-center border-b border-gray-700 pt-15 pb-6">
             {/*Metade à esquerda*/}
             <div className="heroTexto flex-[1.2] flex flex-col gap-5">
                 <div className="px-3 py-1 bg-[#0e1c36] rounded-2xl text-white w-fit">Olá, eu sou</div>
@@ -78,11 +78,23 @@ export default function InformacoesPrincipais() {
                         </button>
                     </Link>
 
-                    <button className="botaoSemFundo flex items-center gap-2">
+                    <a
+                        href={`https://wa.me/5511953822219?text=${encodeURIComponent("Olá, Gabriel! Tenho interesse em desenvolver um projeto e gostaria de conversar sobre os detalhes.")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="botaoSemFundo flex items-center gap-2"
+                    >
                         Quero um Projeto
                         <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
+                    </a>
                 </div>
+
+                <a href="/Currículo Gabriel.pdf" download={'Currículo Gabriel.pdf'}>
+                        <button className="botaoSemFundo flex items-center gap-2">
+                        Baixar currículo
+                        <FontAwesomeIcon icon={faDownload} />
+                    </button>
+                    </a>
 
                 <div className="heroInformacoes flex gap-5">
                     {informacoes.map((item, index) => {
