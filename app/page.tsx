@@ -5,6 +5,7 @@ import ExperienciasProfissionais from "./Components/ExperienciasProfissionais";
 import ComoTrabalho from "./Components/ComoTrabalho";
 import MeusCertificados from "./Components/MeusCertificados";
 import Footer from "./Components/Footer";
+import MinhasConquistas from "./Components/MinhasConquistas";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <MeusProjetos />
         <ExperienciasProfissionais />
         <MeusCertificados />
+        <MinhasConquistas />
         <ComoTrabalho />
       </main>
       <Footer />

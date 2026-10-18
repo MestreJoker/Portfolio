@@ -102,6 +102,13 @@ export default function MeusCertificados() {
             instituicao: "MacroByte",
             conclusao: 2022,
             descricao: "Curso técnico presencial onde aprendi os principais fundamentos da informática, através dos módulos: Windows, Word, PowerPoint, Excel, Acess, Internet e Hardware."
+        },
+        {
+            imagem: "/images/certificados/certificadoIngles.jpg",
+            curso: "Inglês Técnico",
+            instituicao: "MacroByte",
+            conclusao: 2022,
+            descricao: "Formação que proporcionou a base para o desenvolvimento da leitura e escrita em inglês. Utilizo essa capacitação no dia a dia para interpretação de documentações técnicas, leitura de artigos de programação, escrita de código e navegação em fóruns de desenvolvedores."
         }
     ]
     return (
