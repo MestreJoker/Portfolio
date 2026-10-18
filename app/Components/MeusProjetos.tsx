@@ -160,7 +160,7 @@ export default function MeusProjetos() {
         <div id="projetos" className="secaoProjetos pt-6">
             <div className="flex gap-2 items-center">
                 <FontAwesomeIcon icon={faCode} className="iconeTituloSecao"/>
-                <h3 className="tituloSecao">Projetos em que trabalhei</h3>
+                <h3 className="tituloSecao">Projetos Desenvolvidos</h3>
             </div>
 
             <div className="projetosCarrossel">
