@@ -62,6 +62,15 @@ export default function MinhasConquistas() {
         setImagemModal(imagem)
     }
 
+    function baixarPdf(caminhoPdf: string) {
+        const link = document.createElement('a')
+        link.href = caminhoPdf
+        link.download = caminhoPdf.split('/').pop() || 'documento.pdf'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
+
     function rolarConquistas(direcao: -1 | 1) {
         const faixaConquistas = faixaConquistasRef.current
         const primeiroCard = faixaConquistas?.firstElementChild
@@ -79,7 +88,8 @@ export default function MinhasConquistas() {
             imagem: "/images/conquistas/fatec.jpg",
             titulo: "Vestibular Fatec 2025",
             descricao: "31° lugar (de mais de 1.100 candidatos aptos) no primeiro semestre de 2025 na Fatec de São Paulo para o curso de ADS (o mais concorrido), embora tenha optado pela Cruzeiro do Sul.",
-            isPdf: true
+            isPdf: true,
+            pdfUrl: "/Resultado Fatec 2025 - 1° Semestre.pdf"
         },
         {
             imagem: "/images/conquistas/obmep2023.jpg",
@@ -92,7 +102,6 @@ export default function MinhasConquistas() {
             titulo: "OBMEP 2021",
             descricao: "Menção honrosa pelo meu desempenho na segunda fase da 16° Olimpíada Brasileira de Matemática",
             isPdf: false
-
         },
         {
             imagem: "/images/conquistas/obmep2019.jpg",
@@ -111,54 +120,32 @@ export default function MinhasConquistas() {
 
             <div className="projetosCarrossel">
                 <div ref={faixaConquistasRef} className="projetosFaixa flex flex-nowrap gap-6 overflow-hidden py-2 w-full">
-                    {conquistas.map((item, index) => {
-                        if (item.isPdf) {
-                            return (
-                                <a key={item.titulo} href="/Resultado Fatec 2025 - 1° Semestre.pdf" download={"/Resultado Fatec 2025 - 1° Semestre.pdf"}>
-                                    <div
-                                        className="projetoCard w-100 shrink-0 min-h-full rounded-xl border-3 border-[#0d1a2d] flex flex-col hover:scale-101 transition-all duration-300 overflow-hidden cursor-pointer"
-                                    >
-                                        <div className="h-[150px] bg-white relative">
-                                            <Image
-                                                alt={item.titulo}
-                                                src={item.imagem}
-                                                fill
-                                                className="object-cover object-top"
-                                            />
-                                        </div>
-                                        <div className="p-4">
-                                            <h3 className="font-bold text-lg">{item.titulo}</h3>
-                                            <p className="mt-3">{item.descricao}</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            )
-                        }
-                        else {
-                            return (
-                                <div
-                                    key={item.titulo}
-                                    className="projetoCard w-100 shrink-0 min-h-full rounded-xl border-3 border-[#0d1a2d] flex flex-col hover:scale-101 transition-all duration-300 overflow-hidden cursor-pointer"
-                                    onClick={() => exibirModal(item.imagem)}
-                                >
-                                    <div className="h-[150px] bg-white relative">
-                                        <Image
-                                            alt={item.titulo}
-                                            src={item.imagem}
-                                            fill
-                                            className="object-cover object-top"
-                                        />
-                                    </div>
-                                    <div className="p-4">
-                                        <h3 className="font-bold text-lg">{item.titulo}</h3>
-                                        <p className="mt-3">{item.descricao}</p>
-                                    </div>
-                                </div>
-                            )
-                        }
-                    }
-
-                    )}
+                    {conquistas.map((item) => (
+                        <div
+                            key={item.titulo}
+                            className="projetoCard w-100 shrink-0 min-h-full rounded-xl border-3 border-[#0d1a2d] flex flex-col hover:scale-101 transition-all duration-300 overflow-hidden cursor-pointer"
+                            onClick={() => {
+                                if (item.isPdf && item.pdfUrl) {
+                                    baixarPdf(item.pdfUrl)
+                                } else {
+                                    exibirModal(item.imagem)
+                                }
+                            }}
+                        >
+                            <div className="h-[150px] bg-white relative">
+                                <Image
+                                    alt={item.titulo}
+                                    src={item.imagem}
+                                    fill
+                                    className="object-cover object-top"
+                                />
+                            </div>
+                            <div className="p-4">
+                                <h3 className="font-bold text-lg">{item.titulo}</h3>
+                                <p className="mt-3">{item.descricao}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {temOverflow && (
