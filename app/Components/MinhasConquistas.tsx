@@ -4,11 +4,14 @@ import { faArrowLeft, faArrowRight, faAward, faTrophy } from "@fortawesome/free-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+import ModalConfirmacao from "../ModalConfirmacao"
 import ModalCertificado from "./ModalCertificado"
 
 export default function MinhasConquistas() {
-    const [showModal, setShowModal] = useState<boolean>(false)
+    const [showModalCertificado, setShowModalCertificado] = useState<boolean>(false)
+    const [showModalConfirmacao, setShowModalConfirmacao] = useState<boolean>(false)
     const [imagemModal, setImagemModal] = useState<string>("")
+    const [pdfSelecionado, setPdfSelecionado] = useState<string>("")
     const faixaConquistasRef = useRef<HTMLDivElement>(null)
     const [temOverflow, setTemOverflow] = useState(false)
     const [podeRolarEsquerda, setPodeRolarEsquerda] = useState(false)
@@ -37,7 +40,8 @@ export default function MinhasConquistas() {
     }, [])
 
     useEffect(() => {
-        if (!showModal) return
+        const algumModalAberto = showModalCertificado || showModalConfirmacao
+        if (!algumModalAberto) return
 
         const overflowBody = document.body.style.overflow
         const overflowDocumento = document.documentElement.style.overflow
@@ -45,7 +49,10 @@ export default function MinhasConquistas() {
         document.documentElement.style.overflow = "hidden"
 
         const fecharComEscape = (event: KeyboardEvent) => {
-            if (event.key === "Escape") setShowModal(false)
+            if (event.key === "Escape") {
+                setShowModalCertificado(false)
+                setShowModalConfirmacao(false)
+            }
         }
 
         window.addEventListener("keydown", fecharComEscape)
@@ -55,11 +62,16 @@ export default function MinhasConquistas() {
             document.documentElement.style.overflow = overflowDocumento
             window.removeEventListener("keydown", fecharComEscape)
         }
-    }, [showModal])
+    }, [showModalCertificado, showModalConfirmacao])
 
     function exibirModal(imagem: string) {
-        setShowModal(true)
+        setShowModalCertificado(true)
         setImagemModal(imagem)
+    }
+
+    function solicitarDownloadPdf(caminhoPdf: string) {
+        setPdfSelecionado(caminhoPdf)
+        setShowModalConfirmacao(true)
     }
 
     function baixarPdf(caminhoPdf: string) {
@@ -126,7 +138,7 @@ export default function MinhasConquistas() {
                             className="projetoCard w-100 shrink-0 min-h-full rounded-xl border-3 border-[#0d1a2d] flex flex-col hover:scale-101 transition-all duration-300 overflow-hidden cursor-pointer"
                             onClick={() => {
                                 if (item.isPdf && item.pdfUrl) {
-                                    baixarPdf(item.pdfUrl)
+                                    solicitarDownloadPdf(item.pdfUrl)
                                 } else {
                                     exibirModal(item.imagem)
                                 }
@@ -174,7 +186,12 @@ export default function MinhasConquistas() {
                 )}
             </div>
 
-            <ModalCertificado imagem={imagemModal} modalVisible={showModal} informarClique={() => setShowModal(false)} />
+            <ModalCertificado imagem={imagemModal} modalVisible={showModalCertificado} informarClique={() => setShowModalCertificado(false)} />
+            <ModalConfirmacao
+                modalVisible={showModalConfirmacao}
+                baixarPDF={() => baixarPdf(pdfSelecionado)}
+                informarClique={() => setShowModalConfirmacao(false)}
+            />
         </div>
     )
 }
