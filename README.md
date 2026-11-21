@@ -105,6 +105,3 @@ Gostou do meu trabalho? Vamos conversar!
 * 💬 WhatsApp: (11) 95382-2219
 * 🔗 [LinkedIn](https://www.linkedin.com/in/seu-usuario) <!-- Lembrar de colocar o seu link real do LinkedIn -->
 * 🐙 [GitHub](https://github.com/seu-usuario) <!-- Lembrar de colocar o link do seu perfil -->
-
----
-<p align="center">Desenvolvido com 💙 por Gabriel Gomes</p>
