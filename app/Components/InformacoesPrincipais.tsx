@@ -50,7 +50,7 @@ export default function InformacoesPrincipais() {
                         Gabriel <span className="text-(--colorMain)">Gomes</span>
                     </p>
                     <p className="heroCargo text-5xl font-bold">
-                        Desenvolvedor <span className="text-(--colorMain)">Front-end</span>
+                        Desenvolvedor <span className="text-(--colorMain)">Full-stack</span>
                     </p>
                 </div>
 
