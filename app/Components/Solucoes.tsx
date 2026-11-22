@@ -1,7 +1,6 @@
 "use client"
 
-import { faLaravel, faReact, faTailwindCss, faTypescript } from "@fortawesome/free-brands-svg-icons"
-import { faArrowLeft, faArrowRight, faCode } from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft, faArrowRight, faCode, faWrench } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Image from "next/image"
 import Link from "next/link"
@@ -59,7 +58,7 @@ export default function Solucoes() {
     return (
         <div id="solucoes" className="secaoSolucoes pt-6">
             <div className="flex gap-2 items-center">
-                <FontAwesomeIcon icon={faCode} className="iconeTituloSecao" />
+                <FontAwesomeIcon icon={faWrench} className="iconeTituloSecao" />
                 <h3 className="tituloSecao">Soluções para Negócios</h3>
             </div>
 
