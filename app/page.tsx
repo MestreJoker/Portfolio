@@ -6,6 +6,7 @@ import ComoTrabalho from "./Components/ComoTrabalho";
 import MeusCertificados from "./Components/MeusCertificados";
 import Footer from "./Components/Footer";
 import MinhasConquistas from "./Components/MinhasConquistas";
+import Solucoes from "./Components/Solucoes";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="conteudoPrincipal p-8">
         <InformacoesPrincipais />
         <MeusProjetos />
+        <Solucoes />
         <ExperienciasProfissionais />
         <MeusCertificados />
         <MinhasConquistas />
