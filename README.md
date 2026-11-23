@@ -8,12 +8,12 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
 </p>
 
-Este é o repositório do meu portfólio pessoal, onde apresento quem sou, minhas experiências, projetos desenvolvidos, certificados e conquistas. O objetivo deste projeto é centralizar minha trajetória como desenvolvedor Front-end, oferecendo uma interface moderna, rápida e totalmente responsiva.
+Este é o repositório do meu portfólio pessoal, onde apresento quem sou, minhas experiências, projetos desenvolvidos, certificados e conquistas. O objetivo deste projeto é centralizar minha trajetória como desenvolvedor Full-stack, oferecendo uma interface moderna, rápida e totalmente responsiva.
 
 ---
 
 ## 🚀 Sobre Mim
-"Olá, eu sou **Gabriel Gomes, Desenvolvedor Front-end**."
+"Olá, eu sou **Gabriel Gomes, Desenvolvedor Full-stack**."
 Crio interfaces modernas, responsivas e funcionais para aplicações web, unindo design e tecnologia para transformar ideias em soluções reais.
 
 * 📍 São Paulo - SP
