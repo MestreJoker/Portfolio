@@ -27,7 +27,7 @@ Aqui está uma prévia do design e das seções implementadas no portfólio:
 
 <p align="center">
   <!-- Substitua pelo link real da imagem ou pelo caminho local dela, ex: ./assets/portfolio-preview.png -->
-  <img src="https://github.com/user-attachments/assets/2aa25887-21f5-439b-b58b-6b2d302abe69" alt="Preview do Portfólio de Gabriel Gomes" width="800px">
+  <img src="https://github.com/user-attachments/assets/066317dc-f5bf-45f8-83dc-de990ef54fa7" alt="Preview do Portfólio de Gabriel Gomes" width="800px">
 </p>
 
 ---
